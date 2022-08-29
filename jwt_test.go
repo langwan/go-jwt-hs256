@@ -1,4 +1,4 @@
-package go_jwt_hs256
+package jwt
 
 import "testing"
 
