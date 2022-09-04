@@ -65,6 +65,9 @@ func Sign(payload interface{}) (ret string, err error) {
 
 func Verify(token string) (err error) {
 	parts := strings.Split(token, ".")
+	if len(parts) != 3 {
+		return errors.New("parts len error")
+	}
 	data := strings.Join(parts[0:2], ".")
 	hasher := hmac.New(sha256.New, []byte(Secret))
 	_, err = hasher.Write([]byte(data))
